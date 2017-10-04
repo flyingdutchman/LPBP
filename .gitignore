@@ -7,6 +7,10 @@
 
 # Untracked files 
 github-credentials.json
+node_modules/
+
+# VS Code
+.vscode/
 
 # User-specific stuff:
 .idea/**/workspace.xml
