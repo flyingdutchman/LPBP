@@ -7,7 +7,6 @@ const should = chai.should();
 chai.use(dirty);
 
 describe('Github API', () => {
-
   it('Gets me the avatar (image data) of a given user', (done) => {
     const owner = 'LuanaMartelli';
     const url = `https://api.github.com/users/${owner}`;
