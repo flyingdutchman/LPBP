@@ -14,17 +14,18 @@ function downloadContributorsAvatars(originalUrl) {
     .auth(username, token)
     .set('Accept', 'application/vnd.github.v3+json')
     .end((err, res) => {
-      if (err != null) {
+      /* if (err != null) {
         throw err;
         // TODO
+      } */
+      const directoryName = 'tmp_images';
+      if (!fs.exists(directoryName)) {
+        fs.mkdir('tmp_images');
       }
-      fs.mkdir('../tmp_images');
       const contributors = res.body;
-      Object.keys(contributors).forEach((key, index) => {
-        if (contributors[key] != null) {
-          const avatar = contributors[key].avatar_url;
-        }
-      });
+      for (let i = 0; i < contributors.length; i++) {
+        const avatar = contributors[i].avatar_url;
+      }
     });
 }
 
