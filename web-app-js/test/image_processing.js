@@ -19,10 +19,10 @@ describe('Test Functions', () => {
       .auth(username, token)
       .set('Accept', 'application/vnd.github.v3+json')
       .end((err, res) => {
-      /* if (err != null) {
-        throw err;
-        // TODO
-      } */
+        if (err != null) {
+          throw err;
+          // TODO
+        }
         const directoryName = 'tmp_images';
         if (!fs.exists(directoryName)) {
           fs.mkdir('tmp_images');
