@@ -35,6 +35,19 @@
           Menu
           <i class="fa fa-bars"></i>
         </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
 
@@ -65,18 +78,16 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <input class="form-control" id="name" type="text" placeholder="GitHub Repo *" required data-validation-required-message="Please enter a valid GitHub repo.">
+                    <input class="form-control" id="name" type="text" placeholder="YGithub repo *" required data-validation-required-message="Please enter a GitHub repo.">
+                    <p class="help-block text-danger"></p>
                   </div>
-                  <!-- To add : link to download pic -->
-                </div>
-                <div class="col-lg-12">
                   <div class="form-group">
-                    <input class="form-control" id="name" type="text" placeholder="Email Address" required data-validation-required-message="Please enter your email address">
+                    <input class="form-control" id="email" type="email" placeholder="Your Email *" required data-validation-required-message="Please enter your email address.">
+                    <p class="help-block text-danger"></p>
                   </div>
-                  <!-- To add : link to download pic -->
-                </div>
                 <div class="clearfix"></div>
                 <div class="col-lg-12 text-center">
+                  <div id="success"></div>
                   <button id="sendMessageButton" class="btn btn-xl" type="submit">Go !</button>
                 </div>
               </div>
