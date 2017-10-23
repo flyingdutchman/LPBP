@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="shortcut icon" href="../static/favicon.ico">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TWEB - Github Analytics</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/agency.min.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Photo Mosaic</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">New Photo Mosaic</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#portfolio">Database</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead" style="background:#222">
+      <div class="container">
+        <div class="intro-text" style="color:white">
+          <div class="intro-heading">Photo Mosaic</div>
+          <div class="intro-lead-in">This web application generates a picture  with the avatars of the contributors <br> of a GitHub repository<br><br>Enjoy our app !</div>
+          <a class="btn btn-xl js-scroll-trigger" href="#contact">I want a photo too !</a>
+          <a class="btn btn-xl js-scroll-trigger" href="#portfolio">I need inspiration !</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contact -->
+    <section class="bg-light" id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading">Make your own mosaic photo !</h2>
+            <h4>Please, put a github repo, your email address <br>and the URL of a picture you like. <br>Once your mosaic is ready, you will receive an email.</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <form id="contactForm" name="sentMessage" method="post" novalidate>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <input class="form-control" name="repo_git" id="name" type="text" placeholder="Github repo *">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" name="email" id="email" type="email" placeholder="Your Email *">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" name ="URL_Image" id="url" placeholder="URL of the original picture *">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                <div class="col-lg-12 text-center">
+                  <div id="success"></div>
+                  <button id="sendMessageButton" class="btn btn-xl" type="submit">Go !</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="bg-light" id="portfolio">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading">Database</h2>
+            <h3 class="section-subheading text-muted">Get some idea for your picture !</h3>
+          </div>
+        </div>
+        <div class="row" id="dbImages">
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="../static/img/portfolio/miniboxing.jpeg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>miniboxing-plugin</h4>
+              <p class="text-muted">White Otter</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="../static/img/portfolio/elephant.jpeg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>nodejs/node</h4>
+              <p class="text-muted">Elephant</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="../static/img/portfolio/kandinsky.jpeg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>geekcomputers/Python</h4>
+              <p class="text-muted">Kandinsky</p>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="bg-light" id="team">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading">Our Amazing Team</h2>
+            <h3 class="section-subheading text-muted">Together Everyone Achieves More</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="list-inline col-sm-7">
+            <div class="team-member">
+              <img class="mx-auto rounded-circle" src="../static/img/team/1.jpg" alt="">
+              <h4>Mika Pagani</h4>
+              <p class="text-muted">Greetings</p>
+              <ul class="list-inline social-buttons">
+              </ul>
+            </div>
+          </div>
+          <div class="list-inline col-sm-3">
+            <div class="team-member">
+              <img class="mx-auto rounded-circle" src="../static/img/team/2.jpg" alt="">
+              <h4>Luana Martelli</h4>
+              <p class="text-muted">Cookie</p>
+              <ul class="list-inline social-buttons">
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <span class="copyright">HEIG-VD - TWEB - 2017</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Portfolio Modals -->
+
+    <!-- Modal 1 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2>miniboxing-plugin</h2>
+                  <p class="item-intro text-muted">12 collaborators</p>
+                  <img class="img-fluid d-block mx-auto" src="../static/img/portfolio/miniboxing.jpeg" alt="">
+                  <ul class="list-inline">
+                    <li>Date: October 2017</li>
+                    <li>Category: White Otter</li>
+                  </ul>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    OK !</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2>nodejs/node</h2>
+                  <p class="item-intro text-muted">1699 collaborators</p>
+                  <img class="img-fluid d-block mx-auto" src="../static/img/portfolio/elephant.jpeg" alt="">
+                  <ul class="list-inline">
+                    <li>Date: October 2017</li>
+                    <li>Category: Elephant</li>
+                  </ul>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    OK !</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2>geekcomputers/Python</h2>
+                  <p class="item-intro text-muted">95 collaborators</p>
+                  <img class="img-fluid d-block mx-auto" src="../static/img/portfolio/kandinsky.jpeg" alt="">
+                  <ul class="list-inline">
+                    <li>Date: October 2017</li>
+                    <li>Category: Kandinsky</li>
+                  </ul>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    OK !</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/popper/popper.min.js"></script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../static/js/agency.min.js"></script>
+
+  </body>
+
+</html>
