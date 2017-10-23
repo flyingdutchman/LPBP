@@ -89,7 +89,7 @@ Then, to access the webpage run the command `docker ps` and note down the ID and
 Once it has been done, you can get the IP adress thanks to
 `docker inspect CONTAINER_ID | grep "IP"`
 
-And there you have it ! Just access the website by typing the found IP adress and port (i.e. 172.18.0.2:7070)
+And there you have it ! Just access the website by typing the found IP adress and port (i.e. 172.18.0.2:7036)
 
 ### Run with Heroku 
 
