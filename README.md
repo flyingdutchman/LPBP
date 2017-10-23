@@ -13,49 +13,48 @@ This program could be usefull, for example, to recreate the logo of a buisness w
 The client is the graphical interface you interact with. Basically, you can do two things : looking at some photo mosaic that were already made or create your own picture.
 In order to make your own mosaic you need to fill out a form :
 
-:information_source: Note that we did not make checks so the inputs must be correct
+:information_source: Please take note that the input are not parsed, wrong input will cause the app to crash 
 
-- URL of a Githug repository
+- *URL of a Githug repository*
 
-The URL **must** respect the following format : https://github.com/owner/repo
+The URL **must** respect the following format : `https://github.com/owner/repo`
 
-:warning: The number of contributors in a given repository must not be shown as infinite. In such a case, our program won't be able to create the image because of the limitations of the Github's API.
+:warning: The number of contributors in a given repository must not be shown as infinite. In such a case, our program won't be able to create the image because of the limitations of the Github's API. (Error : 'The history or contributor list is too large to list contributors for this repo').
 
-- your e-mail address
+- *Your Email address*
 
-The new picture will be sent to this address. If you don't receive any message, you should check in your spam box.
+	The new picture will be sent to this address. If you don't receive any message, you should check in your spam box.
 
-- URL of an image
+- *URL of an image*
 
-This image will be the template for the mosaic picture. You need to provide a valid URL from internet.
+	This image will be the template for the mosaic picture. You need to provide a valid URL from internet.
 
-When you did all these things, you can go check your Facebook for a while :)
-
+When you did all these things, you can go check your Facebook for a while :grin:
 
 ## The Server 
 
-The server, on its side, make a POST request. Whenever it gots an answer, it does the following thing :
+The server, on its side, waits for a POST from the client. When he recives it, the server do the following things :
 
-He takes the URL from the repo and make a Github API request to collect the avatars URL from the collaborators. With these URL and the URL of the image, it builds a mosaic picture. 
+He takes the URL from the repo and make a Github API request to collect the avatars URL from all non-anonymous collaborators. Then the server will proceed to build the given image with the avatars it just downloaded.
 
-The picture is available on the website too. 
+Once the image has been generated, a Email is sent to with the new image attached to it. Also, the image is saved and shown as an example on the website.
 
-**Known Bug** : on Docker, it works fine but on Heroku, there is a little bug : sometime the image in not loaded on the web page. He could be due to the fact that heroku ereases files when the dyno dies. This should be fixed in the future. 
+**Known Bug** : On Docker, the program works fine but on Heroku, there is a bug : sometime the image is not loaded on the web page. It could be because heroku ereases files when the dyno dies. This should be fixed in the future. 
 
 Its last action is to send the picture by e-mail to the address he got within the POST request. 
 
-
 ## Technologies used 
 
-We searched for a script that made photo mosaic. We found one on this github repo ('https://github.com/codebox/mosaic/blob/master/mosaic.py'). The code is written in Python 2. We wanted to change it so it could work with Python 3. Unfortunately, it uses some libraries that were deprecated in Python 3. Our knowleges in Python are limited, so we did not instist. We took this code and adapted it with our needs. <br>Here are the changes we made : 
-  - The intial code is supposed to take a picture and a directory, containing all the tiles. We replaced that so that the code would work with url. 
-  - We added a variable to stock the final image. Instead of writting it on a directory and then have to read it again, we simply kept it this variable.
+We searched for a script that made photo mosaic. We found one on this github repo (https://github.com/codebox/mosaic/blob/master/mosaic.py). The code is written in Python 2. We wanted to change it so it could work with Python 3. Unfortunately, it uses some libraries that were deprecated in Python 3. Our knowleges in Python are limited, so we did not insisted. We took this code and adapted it with our needs.
+Here are the changes we made : 
+- The intial code is supposed to take a picture and a directory, containing all the tiles. We replaced that so that the code would work with url. 
+- We added a variable to stock the final image. Instead of writting it on a directory and then have to read it again, we simply kept it.
 
-Because we chose this script, the server had to be in Python too. So we deployed the server on Heroku with Flask. We started with this git repo ('https://github.com/datademofun/heroku-basic-flask') to undersand how it worked. 
+Because we chose this script, the server had to be in Python too. So we deployed the server on Heroku with Flask. We started with this git repo (https://github.com/datademofun/heroku-basic-flask) to undersand how it worked. 
 
 Finally, to send an e-mail, we chose to connect to a gmail server. Because of this, we had to create an account and give credentials in the code. A good thing would be to make those credentials private. 
 
-We found an equivalent to ESLint for Python. It is called pylama. We added a line in the Dockerfile so pylama would check all .py files. 
+We found an equivalent to ESLint for Python. It is called Pylama. We added a line in the Dockerfile so pylama would check all .py files. 
 
 
 ## Heroku Limitation 
@@ -66,39 +65,45 @@ It is said in offical documentation (https://devcenter.heroku.com/articles/reque
 
 ## Set Up 
 
-## Github Credentials 
+### Github and SMTP Credentials 
 
-In order to make requests to the Github API, we inserted our github credentials into the code. Since it is servers side, it has little risk to be read by the client.
+In order to make requests to the Github API, we created a file `github-credentials.json` that we access in our code.
+Same goes for the `smtp-credentials.json` file: it has been created to be able to send a mail message. 
+We used a G-mail server to send the e-mail. G-mail want the person who send the e-mail to be authentificated and so we created a special account for this lab (tweb.is.fun@gmail.com).
 
-## SMTP Server
+### Run locally (Docker)
 
-We used a G-mail server to send the e-mail. G-mail want the person who send the e-mail to be authentificated. We created a special account for this lab (tweb.is.fun@gmail.com). The username and the password are available in a file (smtp-crendentials.json). This is cleary not a good practice, and we should have done the same thing as for the github credentials.
-
-
-## Run locally 
+To run the program locally you need to have Docker installed on your machine. (https://www.docker.com)
 
 Procedure : 
 
 ```
-git clone repo
-cd repo
+git clone https://github.com/flyingdutchman/LPBP.git
+cd LPBP
 docker-compose up --build
 ```
 
-Port number is : 
+:information_source:  You might need to `sudo` in order to build the container.
 
-Note that if you run locally the application, you can test a repo with a large number of collaborators. But do not take a repo with infinite number of collaborators, the app would crash because of Github API that does not support that kind of requests (Error : 'The history or contributor list is too large to list contributors for this repo').
+Then, to access the webpage run the command `docker ps` and note down the ID and port of the container.
+Once it has been done, you can get the IP adress thanks to
+`docker inspect CONTAINER_ID | grep "IP"`
 
+And there you have it ! Just access the website by typing the found IP adress and port (i.e. 172.18.0.2:7070)
 
-## Run with Heroku 
+### Run with Heroku 
+
+You can already visit our funciton version on calm-plains-21052.herokuapp.com but if you wish to create your own Heroku app, just follow the next instructions :
 
 ```
-git clone
-cd 
-heroku open  
+git clone https://github.com/flyingdutchman/LPBP.git
+cd LPBP
+heroku login
+heroku create
+git add .
+git commit -m "Init"
+git push heroku master
+heroku open
 ```
 
-Host name : https://calm-lake-26914.herokuapp.com/
-
-
-Please choose a repository with a small number of contributors (we tested until 100 people) because the app will not get enough time to perform all the commands and it will crash. 
+You will be then able to access the website at https://APPNAME.herokuapp.com/
