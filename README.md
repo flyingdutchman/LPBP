@@ -93,7 +93,7 @@ And there you have it ! Just access the website by typing the found IP adress an
 
 ### Run with Heroku 
 
-You can already visit our funciton version on calm-plains-21052.herokuapp.com but if you wish to create your own Heroku app, just follow the next instructions :
+You can already visit our funciton version on https://little-pics-in-big-pics.herokuapp.com but if you wish to create your own Heroku app, just follow the next instructions :
 
 ```
 git clone https://github.com/flyingdutchman/LPBP.git
@@ -107,3 +107,9 @@ heroku open
 ```
 
 You will be then able to access the website at https://APPNAME.herokuapp.com/
+
+## Trivia
+
+Il y a un dossier nommé "js testing" qui n'est pas utilisé dans le code mais que nous avons souhaité laisser.
+Il montre en effet les premières démarches que nous avions fair en début de projet pour effectuer le retrait des URL avatars du côté client.
+Cela a été changé pour être fait du côté serveur en Python grâce à la librairie [PyGithub](http://pygithub.readthedocs.io/en/latest/index.html).
