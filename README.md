@@ -1,4 +1,3 @@
-
 # TWEB - GitHub Analytics 
 
 ## Introduction 
@@ -7,21 +6,20 @@ Welcome to the Github page dedicated to the first TWEB project of the year, usin
 
 The idea of the project is to be able to create a image based on smaller images coming from the avatars of all contrbutors in a repository.
 
-This program could be uselfull, for example, to recreate the logo of a buisness with the persons working on a certain project !
-
+This program could be usefull, for example, to recreate the logo of a buisness with the avatars of people working on a project !
 
 ## The Client
 
-The client is the graphical interface you interact with. Basically, you can do two things : looking at some photo mosaic that were already made or create your own picture. You need to add three things.
-Note that we did not make checks so the inputs must be correct : 
+The client is the graphical interface you interact with. Basically, you can do two things : looking at some photo mosaic that were already made or create your own picture.
+In order to make your own mosaic you need to fill out a form :
+
+:information_source: Note that we did not make checks so the inputs must be correct
 
 - URL of a Githug repository
 
-The URL __must__ respect the following format : https://github.com/owner/repo
+The URL **must** respect the following format : https://github.com/owner/repo
 
-<aside class="notice">
-The number of contributors in a given repository must not be shown as infinite. In such a case, our program won't be able to create the image because of the limitations of the Github's API.
-</aside>
+:warning: The number of contributors in a given repository must not be shown as infinite. In such a case, our program won't be able to create the image because of the limitations of the Github's API.
 
 - your e-mail address
 
@@ -42,7 +40,7 @@ He takes the URL from the repo and make a Github API request to collect the avat
 
 The picture is available on the website too. 
 
-__Known Bug__ : on Docker, it works fine but on Heroku, there is a little bug : sometime the image in not loaded on the web page. He could be due to the fact that heroku ereases files when the dyno dies. This should be fixed in the future. 
+**Known Bug** : on Docker, it works fine but on Heroku, there is a little bug : sometime the image in not loaded on the web page. He could be due to the fact that heroku ereases files when the dyno dies. This should be fixed in the future. 
 
 Its last action is to send the picture by e-mail to the address he got within the POST request. 
 
@@ -68,16 +66,16 @@ It is said in offical documentation (https://devcenter.heroku.com/articles/reque
 
 ## Set Up 
 
-# Github Credentials 
+## Github Credentials 
 
 In order to make requests to the Github API, we inserted our github credentials into the code. Since it is servers side, it has little risk to be read by the client.
 
-# SMTP Server
+## SMTP Server
 
 We used a G-mail server to send the e-mail. G-mail want the person who send the e-mail to be authentificated. We created a special account for this lab (tweb.is.fun@gmail.com). The username and the password are available in a file (smtp-crendentials.json). This is cleary not a good practice, and we should have done the same thing as for the github credentials.
 
 
-# Run locally 
+## Run locally 
 
 Procedure : 
 
@@ -92,7 +90,7 @@ Port number is :
 Note that if you run locally the application, you can test a repo with a large number of collaborators. But do not take a repo with infinite number of collaborators, the app would crash because of Github API that does not support that kind of requests (Error : 'The history or contributor list is too large to list contributors for this repo').
 
 
-# Run with Heroku 
+## Run with Heroku 
 
 ```
 git clone
